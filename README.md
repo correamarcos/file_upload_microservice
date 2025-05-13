@@ -55,12 +55,12 @@ O projeto adota uma arquitetura baseada em **microserviços desacoplados** e **e
 
 ## 📡 Endpoints da API
 
-1. POST /upload
+1. POST /upload/v1/files
    - Descrição: Envia um arquivo para armazenamento no MinIO.
    - Body: multipart/form-data
    - Retorno: Status HTTP e metadados do arquivo.
 
-3. GET /files
+3. GET /upload/v1/files
    - Descrição: Retorna a lista de arquivos armazenados.
    - Retorno: JSON com detalhes dos arquivos.
 
