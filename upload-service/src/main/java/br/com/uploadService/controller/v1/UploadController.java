@@ -1,23 +1,17 @@
-package br.com.uploadService.controller;
+package br.com.uploadService.controller.v1;
 
 import br.com.uploadService.controller.Dtos.FileResponseDto;
 import br.com.uploadService.service.FileService;
 import br.com.uploadService.service.UploadService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/upload")
+@RequestMapping("upload/v1/files")
 public class UploadController {
     private final UploadService uploadService;
     private final FileService fileService;
