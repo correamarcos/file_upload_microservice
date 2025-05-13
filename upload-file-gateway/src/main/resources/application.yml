@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: upload-service
+          uri: http://upload-service:8081
+          predicates:
+            - Path=/upload/**
+        - id: processing-service
+          uri: http://processing-service:8082
+          predicates:
+            - Path=/processing/**
+        - id: notification-service
+          uri: http://notification-service:8083
+          predicates:
+            - Path=/notification/**
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.web.client.RestTemplate: DEBUG

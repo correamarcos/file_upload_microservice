@@ -1,0 +1,33 @@
+file:
+  upload:
+    path: ${FILE_UPLOAD_PATH}   # Diretorio dos arquivos temporarios;
+spring:
+  application:
+    name: processing-service
+  rabbitmq:
+    host: ${SPRING_RABBITMQ_HOST}
+    port: ${SPRING_RABBITMQ_PORT}
+    username: ${SPRING_RABBITMQ_USERNAME}
+    password: ${SPRING_RABBITMQ_PASSWORD}
+    template:
+      exchange: ${SPRING_RABBITMQ_FILE_PROCESSED_TOPIC_EXCHANGE}
+    queues:
+      processing: ${SPRING_RABBITMQ_QUEUE}
+      processed: ${SPRING_RABBITMQ_QUEUE_PROCESSED}
+      notification: ${SPRING_RABBITMQ_NOTIFICATION}
+      notification_failure: ${SPRING_RABBITMQ_QUEUE_NOTIFICATION_FAILURE}
+minio:
+  url: ${MINIO_URL}
+  access-key: ${MINIO_ACCESS_KEY}
+  secret-key: ${MINIO_SECRET_KEY}
+  bucket-name: ${MINIO_BUCKET_NAME}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    tags:
+      application: ${spring.application.name}
+server:
+  port: 8082
